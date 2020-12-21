@@ -1,0 +1,36 @@
+.LoginDoby{
+	font-family: 'BMJUA';
+	font-size: 40px;
+	margin: 40px;
+}
+.DBease{
+	text-align: center;
+}
+.LoginForm{
+	display: inline-block;
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+.DBLogin{
+	border: 3px solid #fff;
+	display: inline-block;
+	text-align: center;
+	height: 160px;
+	width: 500px;
+	padding: 10px;
+}
+input{
+	border:1px solid #fff;
+	display: inline-block;
+	border-radius: 4px;
+	width: 430px;
+	height: 22px;
+	margin:12px;
+	outline: none;
+}
+input[type="submit"]{
+	width: 430px;
+	height: 30px;
+}

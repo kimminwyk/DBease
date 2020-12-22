@@ -5,17 +5,40 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-	<link rel="stylesheet" type="text/css" href="./css/various.css">
-	<link rel="stylesheet" type="text/css" href="./css/login.css">
-	<link rel="stylesheet" type="text/css" href="./css/font.css">
+	<link rel="stylesheet" type="text/css" href="./templates/css/various.css">
+	<link rel="stylesheet" type="text/css" href="./templates/css/login.css">
+	<link rel="stylesheet" type="text/css" href="./templates/css/font.css">
 	<style type="text/css">
 		html,body{
-			margin: 0px;
-			background: #000;
 			color:#fff;
+			margin: 0px;
+			background: #363636;
 		}
 		.xi-size{
 			font-size: 30px;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.xi-caret-size{
+			font-size: 20px;
+			margin-left: 10px;
+			padding-bottom:0px;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.SelectOption{
+			top: -5px;
+			width: 160px;
+			height: 26px;
+			right: -180px;
+			font-size: 13px;
+			overflow: hidden;
+			background: black;
+			line-height: 28px;
+			padding-bottom:1px;
+			position: relative;
+			font-family: 'BMJUA';
+			border:3px solid #fff;
 			display: inline-block;
 			vertical-align: middle;
 		}
@@ -25,19 +48,55 @@
 	<div class="DBease">
 		<div class="LoginForm">
 			<center class="LoginDoby">DBease</center>
+			<div class="SelectOption">
+				<div>
+					<label class="DBList-lablel autdb">MYSQL</label>
+					<i class="xi-caret-size xi-caret-up-square-o"></i><br>
+					<label class="DBList-lablel todb">MSSQL</label>
+				</div>
+			</div><br>
 			<div class="DBLogin">
-				<form>
+				<form method="POST" action="./DBConnect.php">
 					<i class="xi-size xi-user-o"></i><input type="text" name="DBid">
 					<i class="xi-size xi-lock-o"></i><input type="password" name="DBPassWord">
 					<div class="i-size bo-thdim">Click</div>
 					<input type="submit" name="Connect" value="Click" class="hidden">
+					<input type="hidden" name="db" value="MYSQL" class="dbname">
 				</form>
 			</div>
 		</div>
 	</div>
 	<script type="text/javascript">
+		function widthheight(){
+			if($(".xi-caret-size").hasClass("xi-caret-up-square-o") == true){
+				$(".xi-caret-size").removeClass("xi-caret-up-square-o");
+				$(".xi-caret-size").addClass("xi-caret-down-square-o");
+				$(".SelectOption").css("height","auto");
+			}
+			else{
+				$(".xi-caret-size").removeClass("xi-caret-down-square-o");
+				$(".xi-caret-size").addClass("xi-caret-up-square-o");
+				$(".SelectOption").css("height","26px");
+			}
+		}
 		$(".bo-thdim").click(function(){
 			$(".hidden").trigger("click");
+		});
+		$(".autdb, .xi-caret-size").click(function(){
+			widthheight();
+		});
+		$(".todb").click(function(){
+			var mssql = $(".todb").text();
+			if(mssql == "MSSQL"){
+				$(".autdb").text(mssql);
+				$(".todb").text("MYSQL");
+			}
+			else{
+				$(".autdb").text(mssql);
+				$(".todb").text("MSSQL");
+			}
+			$(".dbname").val(mssql);
+			widthheight();
 		});
 	</script>
 </body>

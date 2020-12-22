@@ -1,0 +1,19 @@
+.i-size{
+	font-family: 'BMJUA';
+	font-size: 25px;
+}
+.hidden{
+	display: none;
+}
+.xi-size{
+	display: inline-block;
+	vertical-align: middle;
+}
+input::selection{
+	color:#fff;
+	background: #000;
+}
+::selection{
+	color:#000;
+	background: #fff;
+}

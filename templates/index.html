@@ -2,7 +2,10 @@
 <html>
 <head>
 	<title>DBease Login</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/various.css">
 	<link rel="stylesheet" type="text/css" href="./css/login.css">
 	<link rel="stylesheet" type="text/css" href="./css/font.css">
 	<style type="text/css">
@@ -12,8 +15,9 @@
 			color:#fff;
 		}
 		.xi-size{
-			font-size: 25px;
+			font-size: 30px;
 			display: inline-block;
+			vertical-align: middle;
 		}
 	</style>
 </head>
@@ -24,11 +28,17 @@
 			<div class="DBLogin">
 				<form>
 					<i class="xi-size xi-user-o"></i><input type="text" name="DBid">
-					<i></i><input type="text" name="DBPassWord">
-					<input type="submit" name="Connect">
+					<i class="xi-size xi-lock-o"></i><input type="password" name="DBPassWord">
+					<div class="i-size bo-thdim">Click</div>
+					<input type="submit" name="Connect" value="Click" class="hidden">
 				</form>
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+		$(".bo-thdim").click(function(){
+			$(".hidden").trigger("click");
+		});
+	</script>
 </body>
 </html>

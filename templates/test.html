@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.bo-thdim{
+			border:4px solid #e8e8e8;
+			background: #000;
+			color:#fff;
+			display: inline-block;
+			margin: 13px;
+			width: 395px;
+			height: 45px;
+		}
+		.bo-thdim:after,
+		.bo-thdim:before{
+			-webkit-transition: all 0.4s;
+			transition: all 0.4s;
+			position: absolute;
+			content: "";
+		}
+		.bo-thdim:before{
+		
+		}
+		.bo-thdim:after{
+			background: red;
+			width: 50px;
+			height: 50px;
+			left: 100px;
+			top:100px;
+		}
+	</style>
+</head>
+<body>
+	<div class="bo-thdim"></div>
+</body>
+</html>

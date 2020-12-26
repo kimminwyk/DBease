@@ -1,0 +1,33 @@
+.errorbox{
+	border:0px solid #f5c6cb;;
+	background-color: #f8d7da;
+	display: none;
+	margin-top: 10px;
+	/*height: 60px;*/
+	height: 0px;
+	width: 526px;
+	white-space: nowrap; 
+	overflow: hidden; 
+	text-overflow: ellipsis;
+	white-space: normal;
+	position: relative;
+}
+.message{
+	font-family: 'BMJUA';
+	display: inline-block;
+	position: absolute;
+	font-size: 17px;
+	color: #721c24;
+	text-align: left;
+	width: 400px;
+	padding:12px;
+	left: 0px;
+}
+.close-box{
+	display: inline-block;
+	position: absolute;
+	font-size: 20px;
+	color:#000;
+	right: 15px;
+	top:20px;
+}

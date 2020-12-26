@@ -11,7 +11,7 @@
 .LoginForm{
 	display: inline-block;
 	position: absolute;
-	top: 40%;
+	top: 45%;
 	left: 50%;
 	transform: translate(-50%,-50%);
 }
@@ -66,8 +66,8 @@ input{
 }
 
 .bo-thdim:before{
-	border-bottom: 3px solid #0cb34f;
-	border-left: 3px solid #0cb34f;
+	border-bottom: 3px solid #0ecf5c;
+	border-left: 3px solid #0ecf5c;
 	left: 57px;
 	bottom:17px;
 	height: 10px;
@@ -75,8 +75,8 @@ input{
 }
 
 .bo-thdim:after{
-	border-top: 3px solid #0cb34f;
-	border-right: 3px solid #0cb34f;
+	border-top: 3px solid #0ecf5c;
+	border-right: 3px solid #0ecf5c;
 	right: 57px;
 	top:127px;
 	height: 10px;

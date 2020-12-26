@@ -8,13 +8,14 @@
 	<link rel="stylesheet" type="text/css" href="./templates/css/various.css">
 	<link rel="stylesheet" type="text/css" href="./templates/css/login.css">
 	<link rel="stylesheet" type="text/css" href="./templates/css/font.css">
+	<link rel="stylesheet" type="text/css" href="./templates/css/show.css">
 	<style type="text/css">
 		html,body{
 			color:#fff;
 			margin: 0px;
 			background: #363636;
 		}
-		.xi-size{
+		.xi-size-in{
 			font-size: 30px;
 			display: inline-block;
 			vertical-align: middle;
@@ -52,21 +53,67 @@
 				<div>
 					<label class="DBList-lablel autdb">MYSQL</label>
 					<i class="xi-caret-size xi-caret-up-square-o"></i><br>
-					<label class="DBList-lablel todb">MSSQL</label>
+					<!--<label class="DBList-lablel todb">MSSQL</label>-->
 				</div>
 			</div><br>
 			<div class="DBLogin">
-				<form method="POST" action="./DBConnect.php">
-					<i class="xi-size xi-user-o"></i><input type="text" name="DBid">
-					<i class="xi-size xi-lock-o"></i><input type="password" name="DBPassWord">
+					<i class="xi-size-in xi-user-o"></i><input type="text" name="DBid">
+					<i class="xi-size-in xi-lock-o"></i><input type="password" name="DBPassWord">
 					<div class="i-size bo-thdim">Click</div>
 					<input type="submit" name="Connect" value="Click" class="hidden">
 					<input type="hidden" name="db" value="MYSQL" class="dbname">
-				</form>
+			</div>
+			<div class="errorbox">
+				<div class="message">Allow_Login_PassWord_Space 제약에 의해 패스워드 공백 로그인은 허용되지 않습니다.</div>
+				<i class="xi-file-remove-o xi-size close-box"></i>
 			</div>
 		</div>
 	</div>
 	<script type="text/javascript">
+		document.addEventListener('keydown', function(event){
+			if(event.keyCode == 13){
+				$("input[type='submit']").trigger("click");
+			}
+		});
+		function errorboxshow(string){
+			$(".message").text(string);
+			$(".errorbox").css("display","block");
+			$(".errorbox").animate({
+				height: '60px'
+			}, 500, 'swing');
+			$(".errorbox").delay(4000).fadeOut(500);
+		}
+
+		$("input[type='submit']").click(function(){
+			$.ajax(
+				{
+					type: "POST",
+					url: "DBConnect.php",
+					dataType: "text",
+					data: {
+						"DBid": $("input[name='DBid']").val(),
+						"DBPassWord": $("input[name='DBPassWord']").val(),
+						"db": $("input[name='db']").val(),
+						"Connect": $("input[name='Connect']").val()
+					},
+					error: function(log){
+						errorboxshow("DBConnect 파일 접근 실패");
+					},
+					success: function(data){
+						if(data == ""){
+							window.location.href="./AutoSet/index.php";
+						}
+						else{
+							errorboxshow(data);
+						}
+					}
+				}
+			);
+				/*
+				var mes = "Allow_Login_PassWord_Space 제약에 의해 패스워드 공백 로그인은 허용되지 않습니다.";
+				errorboxshow(mes);
+				*/
+			});
 		function widthheight(){
 			if($(".xi-caret-size").hasClass("xi-caret-up-square-o") == true){
 				$(".xi-caret-size").removeClass("xi-caret-up-square-o");

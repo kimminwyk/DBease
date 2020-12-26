@@ -1,0 +1,40 @@
+.xi-set{
+	display: inline-block;
+	vertical-align: middle;
+	transition: all 1s;
+	cursor: pointer;
+}
+.xi-set:hover{
+	transform: rotate(180deg);
+}
+.xi-size{
+	font-size: 25px;
+	position: absolute;
+	left: 20px;
+	top:13px;
+}
+
+.bar-nav{
+	display: block;
+	height: 50px;
+	border-radius: 4px;
+	background: #343a40;
+}
+
+.auele-Stdrt{
+	position: absolute;
+	display: inline-block;
+	font-weight: 700;
+	font-size: 17px;
+	left: 70px;
+	top: 12px;
+}
+
+.Log-Out{
+	display: inline-block;
+	position: absolute;
+	display: inline-block;
+	font-size: 17px;
+	right: 30px;
+	top:12px;
+}

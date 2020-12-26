@@ -3,6 +3,7 @@
 error_reporting(0);
 
 include("AllowConfig.php");
+include("SessionConfig.php");
 
 if( isset($_POST['DBid']) && isset($_POST['DBPassWord']) && isset($_POST['db']) && isset($_POST['Connect'])){
 	/*
@@ -35,11 +36,11 @@ if( isset($_POST['DBid']) && isset($_POST['DBPassWord']) && isset($_POST['db']) 
 			if(!$MyConnect)
 				echo "MYSQL 연결에 실패했습니다.";
 			else{
-				echo "MYSQL 연결 성공";
+				DbConnect($db,$id,$pw);
 			}
 	
 	
-		}else if( $db == "MSSQL"){
+		}/*else if( $db == "MSSQL"){
 	
 			$MyConnect = mssql_connect(
 								$host,
@@ -50,11 +51,11 @@ if( isset($_POST['DBid']) && isset($_POST['DBPassWord']) && isset($_POST['db']) 
 			if(!$MyConnect)
 				echo "MSSQL 연결에 실패했습니다.";
 			else{
-				echo "MSSQL 연결 성공";
+				DbConnect($db,$id,$pw);
 			}
 	
-		}else{
-			echo "No DataBase";
+		}*/else{
+			echo "아직 지원하지 않은 데이터베이스입니다.";
 		}
 	}
 }

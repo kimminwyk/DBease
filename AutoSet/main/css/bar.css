@@ -1,4 +1,34 @@
+.left-box {
+	list-style-type: none;
+	background-color: #323840;
+	color:#fff;
+	width: 230px;
+	padding: 0;
+	margin:  0;
+	position: fixed;
+	height: auto;
+	left: -240px;
+	top:50px;
+	overflow: auto;
+}
+.left-box-li a {
+	text-decoration: none;
+	display: block;
+	color: #ced4da;
+	padding: 8px 15px 8px 15px;
+	font-weight: bold;
+}
+.left-box-li a.job {
+	background-color: #c4c03d;
+	color: #000;
+}
+.left-box-li a:hover:not(.job) {
+	background-color: #55585c;
+	color: #fff;
+}
 .xi-set{
+	margin: 12px;
+	margin-left: 20px;
 	display: inline-block;
 	vertical-align: middle;
 	transition: all 1s;
@@ -9,12 +39,10 @@
 }
 .xi-size{
 	font-size: 25px;
-	position: absolute;
-	left: 20px;
-	top:13px;
 }
 
 .bar-nav{
+	position: static;
 	display: block;
 	height: 50px;
 	border-radius: 4px;
@@ -23,18 +51,18 @@
 
 .auele-Stdrt{
 	position: absolute;
+	top:12px;
+	left: 70px;
 	display: inline-block;
 	font-weight: 700;
 	font-size: 17px;
-	left: 70px;
-	top: 12px;
 }
 
 .Log-Out{
-	display: inline-block;
 	position: absolute;
+	right: 20px;
+	margin: 10px;
 	display: inline-block;
 	font-size: 17px;
-	right: 30px;
-	top:12px;
+	text-align: right;
 }

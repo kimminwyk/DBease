@@ -1,0 +1,154 @@
+<?php include "MYSQL/Cont.php"; ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DB</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+	<style type="text/css">
+		@font-face {
+    		font-family: 'TmoneyRoundWindExtraBold';
+    		src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindExtraBold.woff') format('woff');
+    		font-weight: normal;
+    		font-style: normal;
+		}
+		@font-face {
+		    font-family: 'TmoneyRoundWindExtraBold';
+		    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindExtraBold.woff') format('woff');
+		    font-weight: normal;
+		    font-style: normal;
+		}
+		html,body{
+			margin: 0px;
+			background: #42474d;
+		}
+		.DB-Box-View{
+			display: inline-block;
+			width: 400px;
+			min-height: 400px;
+			/*
+			border-bottom:3px solid black;
+			border-left:3px solid black;
+			border-right:3px solid black;
+			*/
+			border: 3px solid #2a2e36;
+			background: #2c3038;
+			border-radius: 5px;
+			height: auto;
+			vertical-align: middle;
+			overflow: scroll;
+			margin:30px;
+			margin-left: 50px;
+			font-family: 'TmoneyRoundWindExtraBold';
+		}
+		.View-DB{
+			display: inline-block;
+			width: 350px;
+		}
+		.DB-Box-View::-webkit-scrollbar {
+		   	width: 0px;
+		   	height: 0px;
+		}
+		.DB-Box-View::-webkit-scrollbar-thumb {
+		  	border:none;
+		}
+		.DB-Box-View::-webkit-scrollbar-track {
+		  	border:none;
+		}
+		/*
+		.DB-Box-Status-Lable{
+			font-size: 20px;
+			font-weight: 700;
+			padding-left: 10px;
+			line-height: 30px;
+			font-family: 'TmoneyRoundWindExtraBold';
+		}
+		*/
+		.Lable-DB{
+			font-size: 17px;
+			vertical-align: middle;
+			cursor: pointer;
+		}
+		.ul-Table{
+			display: none;
+			cursor: pointer;
+		}
+		.li-Table{
+			font-size: 17px;
+		}
+		.xi-sets{
+			vertical-align: middle;
+			font-size: 16px;
+		}
+		.DB-Status{
+			display: block;
+			border-bottom:2px solid #1b1e24;
+			margin-bottom: 10px;
+		}
+		.DB-Status > label{
+			display: inline-block;
+			padding-left: 10px;
+			height: 30px;
+			line-height: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="View-DB">
+	<div class="DB-Box-View">
+		<div class="DB-Status">
+			<label>DB Status</label>
+		</div>
+		<?php 
+			$Inform = $My->query("SELECT DISTINCT table_schema FROM information_schema.tables");
+			
+			while($res = mysqli_fetch_assoc($Inform)){
+			
+			?>
+				<div class="DB-Box-Views">
+					<i class="xi-plus-min xi-sets"></i>
+					<label class="Lable-DB"><?php echo $res['table_schema']; ?></label>
+					<br>
+						<ul class="ul-Table">
+				<?php 
+					$InformTable = $My->query("SELECT DISTINCT table_name FROM information_schema.tables WHERE table_schema='".$res['table_schema']."'");
+			
+					while($rest = mysqli_fetch_assoc($InformTable)){
+				?>
+					<li class="li-Table" onclick="Lilocathref(this);"><?php echo $rest['table_name']; ?></li><br>
+				<?php
+				}
+				?>
+				</ul><br>
+				</div>
+				<?php
+			
+			}
+		
+		?>
+	</div>
+</div>
+<script type="text/javascript">
+	function Lilocathref(obj){
+		var Addres = $(obj).text();
+		var DBname = $(obj).closest(".ul-Table").siblings(".Lable-DB").text()
+		window.location.href='./?dbname='+DBname+'&tablename='+Addres;
+	}
+	$(".DB-Box-Views").click(function(){
+		if($(this).find(".ul-Table").css("display") == "none"){
+			$(".ul-Table").css("display","none");
+			$(".xi-sets").removeClass("xi-minus-min");
+			$(".xi-sets").addClass("xi-plus-min");
+			$(this).find(".ul-Table").css("display","inline-block");
+			$(this).find(".xi-sets").removeClass("xi-plus-min");
+			$(this).find(".xi-sets").addClass("xi-minus-min");
+		}
+		else{
+			$(this).find(".ul-Table").css("display","none");
+			$(this).find(".xi-sets").removeClass("xi-minus-min");
+			$(this).find(".xi-sets").addClass("xi-plus-min");
+		}
+	});
+</script>
+</body>
+</html>

@@ -3,82 +3,9 @@
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
-	<!--<link rel="stylesheet" type="text/css" href="./main/css/bar.css">-->
+	<link rel="stylesheet" type="text/css" href="./main/css/bar.css">
 	<title>DBease</title>
 	<style type="text/css">
-		ul {
-			list-style-type: none;
-			background-color: #323840;
-			color:#fff;
-			width: 25%;
-			padding: 0;
-			margin:  0;
-			position: fixed;
-			height: 100%;
-			left: -240px;
-			top:50px;
-			overflow: auto;
-			/*#4e545c*/
-		}
-	
-		li a {
-			text-decoration: none;
-			display: block;
-			color: #ced4da;
-			padding: 8px 15px 8px 15px;
-			font-weight: bold;
-		}
-	
-		li a.job {
-			background-color: #c4c03d;
-			color: #000;
-		}
-	
-		li a:hover:not(.job) {
-			background-color: #55585c;
-			color: #fff;
-		}
-
-		.xi-set{
-			margin: 12px;
-			margin-left: 20px;
-			display: inline-block;
-			vertical-align: middle;
-			transition: all 1s;
-			cursor: pointer;
-		}
-		.xi-set:hover{
-			transform: rotate(180deg);
-		}
-		.xi-size{
-			font-size: 25px;
-		}
-		
-		.bar-nav{
-			position: static;
-			display: block;
-			height: 50px;
-			border-radius: 4px;
-			background: #343a40;
-		}
-		
-		.auele-Stdrt{
-			display: inline-block;
-			font-weight: 700;
-			font-size: 17px;
-		}
-		
-		.Log-Out{
-			position: absolute;
-			right: 20px;
-			margin: 10px;
-			display: inline-block;
-			font-size: 17px;
-			text-align: right;
-		}
-
-
-
 		html,body{
 			margin: 0px;
 			background: #42474d;
@@ -87,16 +14,25 @@
 	</style>
 </head>
 <body>
-	<ul>
-		<li><a class="ul-a job" href="/dbease/AutoSet/">Home</a></li>
-		<li><a class="ul-a" href="./User/">User</a></li>
-		<li><a class="ul-a" href="./DB/">DB</a></li>
+	<ul class="left-box">
+		<li class="left-box-li"><a class="ul-a job" href="/dbease/AutoSet/">Home</a></li>
+		<li class="left-box-li"><a class="ul-a" href="./User/">User</a></li>
+		<li class="left-box-li"><a class="ul-a" href="./DB/">DB</a></li>
 	</ul>
 	<nav class="bar-nav">
 		<i class="xi-bars xi-set xi-size"></i>
 		<span class="auele-Stdrt">Home</span>
 		<span class="Log-Out">LogOut</span>
 	</nav>
+	<div class="View">
+		<?php 
+			if(isset($_GET['dbname'])){
+				include "view.php";
+			}else{
+				include "DB/index.html";
+			}
+		?>
+	</div>
 	<script type="text/javascript">
 		$(".ul-a").click(function(){
 			$(".ul-a").removeClass('job');
